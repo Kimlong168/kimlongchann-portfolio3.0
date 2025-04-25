@@ -8,21 +8,25 @@ import { useLanguage } from "@/components/language-provider";
 export default function AboutSection() {
   const { t } = useLanguage();
 
-  const PDF_FILE_URL = "https://kimlongchann.netlify.app/ChannKimlong_CV.PDF";
+  const PDF_FILE_URL = "https://channkimlong.vercel.app/ChannKimlong_CV.pdf";
 
-  const handleDownload = (url: string): void => {
-    const fileName = url.split("/").pop();
-    if (!fileName) {
-      console.error("Could not determine the file name from the URL");
-      return;
+  const handleDownload = async () => {
+    try {
+      const fileName = PDF_FILE_URL.split("/").pop() || "downloaded.pdf";
+      const response = await fetch(PDF_FILE_URL);
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = blobUrl;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("Download failed:", error);
     }
-
-    const aTag = document.createElement("a");
-    aTag.href = url;
-    aTag.setAttribute("download", fileName);
-    document.body.appendChild(aTag);
-    aTag.click();
-    aTag.remove();
   };
 
   return (
