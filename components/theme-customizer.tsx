@@ -6,67 +6,35 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useLanguage } from "@/components/language-provider";
+import setGlobalColorTheme from "@/lib/theme-colors";
 
 const themes = [
   {
-    name: "zinc",
+    name: "Zinc",
     label: "Zinc",
     activeColor: "bg-zinc-500",
   },
+
   {
-    name: "slate",
-    label: "Slate",
-    activeColor: "bg-slate-500",
-  },
-  {
-    name: "stone",
-    label: "Stone",
-    activeColor: "bg-stone-500",
-  },
-  {
-    name: "gray",
-    label: "Gray",
-    activeColor: "bg-gray-500",
-  },
-  {
-    name: "neutral",
-    label: "Neutral",
-    activeColor: "bg-neutral-500",
-  },
-  {
-    name: "red",
-    label: "Red",
-    activeColor: "bg-red-500",
-  },
-  {
-    name: "rose",
-    label: "Rose",
-    activeColor: "bg-rose-500",
-  },
-  {
-    name: "orange",
-    label: "Orange",
-    activeColor: "bg-orange-500",
-  },
-  {
-    name: "green",
+    name: "Green",
     label: "Green",
     activeColor: "bg-green-500",
   },
   {
-    name: "blue",
+    name: "Blue",
     label: "Blue",
     activeColor: "bg-blue-500",
   },
+
   {
-    name: "yellow",
-    label: "Yellow",
-    activeColor: "bg-yellow-500",
+    name: "Rose",
+    label: "Rose",
+    activeColor: "bg-rose-500",
   },
   {
-    name: "violet",
-    label: "Violet",
-    activeColor: "bg-violet-500",
+    name: "Orange",
+    label: "Orange",
+    activeColor: "bg-orange-500",
   },
 ];
 
@@ -78,13 +46,7 @@ export default function ThemeCustomizer() {
 
   const applyTheme = (themeName: string) => {
     setSelectedTheme(themeName);
-
-    // Apply theme color
-    document.documentElement.style.setProperty("--theme-color", themeName);
-
-    // You would typically update a CSS variable or class here
-    // For a real implementation, you'd need to modify your Tailwind config
-    // and have a way to dynamically change the primary color
+    setGlobalColorTheme(theme as "light" | "dark", themeName as ThemeColors);
   };
 
   const applyRadius = (value: string) => {
