@@ -112,14 +112,15 @@ export default function Terminal() {
     setCommandHistory((prev) => [...prev, command]);
     setHistoryIndex(-1);
     setInput("");
-    alert(command);
+
     // Process command
     if (command === "help") {
-      // Show available commands
+      alert("who hurt u babi? dun worry i am here to help u💖");
       return;
     } else if (command.startsWith("goto ")) {
       const section = command.split(" ")[1];
       const sectionExists = sections.find((s) => s.id === section);
+
       if (sectionExists) {
         setActiveTab(section);
       }

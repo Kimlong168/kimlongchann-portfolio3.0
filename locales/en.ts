@@ -32,6 +32,7 @@ export const en = {
     birthday: "Birthday",
     "life-progress": "Life",
     gallery: "Gallery",
+    more: "More",
   },
   about: {
     title: "About Me",

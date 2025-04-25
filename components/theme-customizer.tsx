@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useLanguage } from "@/components/language-provider";
-import setGlobalColorTheme from "@/lib/theme-colors";
-
+import { useThemeContext } from "@/components/theme-data-provider";
+import { cn } from "@/lib/utils";
 const themes = [
   {
     name: "Zinc",
@@ -44,14 +44,15 @@ const themes = [
 ];
 
 export default function ThemeCustomizer() {
-  const { theme, setTheme } = useTheme();
   const { t } = useLanguage();
+
   const [radius, setRadius] = useState("0.5rem");
-  const [selectedTheme, setSelectedTheme] = useState("");
+
+  const { themeColor, setThemeColor } = useThemeContext();
+  const { theme, setTheme } = useTheme();
 
   const applyTheme = (themeName: string) => {
-    setSelectedTheme(themeName);
-    setGlobalColorTheme(theme as "light" | "dark", themeName as ThemeColors);
+    setThemeColor(themeName as ThemeColors);
   };
 
   const applyRadius = (value: string) => {
@@ -67,14 +68,20 @@ export default function ThemeCustomizer() {
           <Button
             variant={theme === "light" ? "default" : "outline"}
             onClick={() => setTheme("light")}
-            className="justify-start"
+            className={cn(
+              "justify-start ",
+              themeColor === "Zinc" && "text-white"
+            )}
           >
             {t("customizer.light")}
           </Button>
           <Button
             variant={theme === "dark" ? "default" : "outline"}
             onClick={() => setTheme("dark")}
-            className="justify-start"
+            className={cn(
+              "justify-start ",
+              themeColor === "Zinc" && "text-black"
+            )}
           >
             {t("customizer.dark")}
           </Button>
@@ -139,7 +146,7 @@ export default function ThemeCustomizer() {
               key={theme.name}
               variant="outline"
               className={`justify-start gap-2 ${
-                selectedTheme === theme.name ? "border-primary" : ""
+                themeColor === theme.name ? "border-primary" : ""
               }`}
               onClick={() => applyTheme(theme.name)}
             >

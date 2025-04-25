@@ -38,7 +38,10 @@ export default function AboutSection() {
             <p className="text-muted-foreground mb-4">{t("about.bio")}</p>
             <p className="text-muted-foreground mb-6">{t("about.bio2")}</p>
 
-            <Button onClick={() => handleDownload()} className="gap-2">
+            <Button
+              onClick={() => handleDownload()}
+              className="gap-2 bg-primary dark:text-black text-white"
+            >
               <Download className="h-4 w-4" />
               {t("about.download")}
             </Button>

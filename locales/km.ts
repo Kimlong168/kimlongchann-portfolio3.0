@@ -32,6 +32,7 @@ export const km = {
     birthday: "ថ្ងៃកំណើត",
     "life-progress": "ជីវិត",
     gallery: "វិចិត្រសាល",
+    more: "ផ្សេងៗ",
   },
   about: {
     title: "អំពីខ្ញុំ",
