@@ -1,0 +1,91 @@
+export const km = {
+  header: {
+    title: "គីមឡុង Terminal",
+    quote: "កូដ បង្កើត ច្នៃប្រឌិត",
+  },
+  profile: {
+    name: "ចាន់ គីមឡុង",
+    title: "អ្នកអភិវឌ្ឍន៍កម្មវិធី (Full Stack Developer)",
+  },
+  terminal: {
+    placeholder: "វាយពាក្យបញ្ជា...",
+    hint: "វាយ 'help' សម្រាប់បញ្ជីពាក្យបញ្ជា",
+  },
+  customizer: {
+    title: "ប្ដូរតាមចិត្ត",
+    mode: "របៀប",
+    light: "ភ្លឺ",
+    dark: "ងងឹត",
+    radius: "រាងជ្រុង",
+    none: "គ្មាន",
+    default: "ធម្មតា",
+    large: "ធំ",
+    colors: "ពណ៌",
+  },
+  sections: {
+    about: "អំពីខ្ញុំ",
+    blog: "ប្លុក",
+    projects: "គម្រោង",
+    experience: "បទពិសោធន៍",
+    skills: "ជំនាញ",
+    achievements: "សមិទ្ធិផល",
+    birthday: "ថ្ងៃកំណើត",
+    "life-progress": "វឌ្ឍនភាពជីវិត",
+    gallery: "វិចិត្រសាល",
+  },
+  about: {
+    title: "អំពីខ្ញុំ",
+    bio: "សួស្តី! ខ្ញុំជាអ្នកអ្នកអភិវឌ្ឍន៍កម្មវិធី (Full Stack Developer) ដែលមានចំណូលចិត្តក្នុងការបង្កើតកម្មវិធីវេបសាយ និងងាយស្រួលប្រើប្រាស់។ ខ្ញុំជំនាញក្នុងលើ JavaScript, React js, Next js, Node js, Express js និងNest js ហើយខ្ញុំចូលចិត្តធ្វើការលើទាំង frontend និង backend នៃកម្មវិធី។",
+    bio2: "ក្រៅពីការសរសេរកូដ​ ខ្ញុំចូលចិត្តស្វែងយល់ពីបច្ចេកវិទ្យាថ្មីៗ ឬចែករំលែកចំណេះដឹងរបស់ខ្ញុំតាមរយៈអត្ថបទប្លុកនិងការបង្រៀនផ្សេងៗ។",
+    download: "ទាញយក CV",
+  },
+  blog: {
+    title: "អត្ថបទប្លុក",
+    readMore: "អានបន្ថែម",
+    viewAll: "មើលអត្ថបទទាំងអស់",
+  },
+  projects: {
+    title: "គម្រោង",
+    filterBy: "ច្រោះតាម",
+    clearFilters: "សម្អាត",
+    code: "មើលកូដ",
+    demo: "មើលបន្ថែម",
+  },
+  experience: {
+    title: "បទពិសោធន៍និងការអប់រំ",
+  },
+  skills: {
+    title: "ជំនាញ",
+    categories: {
+      web: "ការអភិវឌ្ឍន៍វេបសាយ",
+      app: "ការអភិវឌ្ឍន៍កម្មវិធី",
+      marketing: "ទីផ្សារឌីជីថល",
+      design: "ការរចនាផូស្ទ័រ",
+    },
+  },
+  achievements: {
+    title: "សមិទ្ធិផល",
+  },
+  birthday: {
+    title: "ការរាប់ថយក្រោយថ្ងៃកំណើត",
+    description: "ពេលវេលារហូតដល់ថ្ងៃកំណើតបន្ទាប់របស់ខ្ញុំ",
+    days: "ថ្ងៃ",
+    hours: "ម៉ោង",
+    minutes: "នាទី",
+    seconds: "វិនាទី",
+  },
+  lifeProgress: {
+    title: "វឌ្ឍនភាពជីវិត",
+    description: "ផ្អែកលើអាយុកាលរំពឹងទុក 90 ឆ្នាំ",
+    progressLabel: "វឌ្ឍនភាពជីវិត",
+    years: "ឆ្នាំ",
+    weeks: "សប្តាហ៍",
+    days: "ថ្ងៃ",
+    hours: "ម៉ោង",
+    minutes: "នាទី",
+    seconds: "វិនាទី",
+  },
+  gallery: {
+    title: "វិចិត្រសាលរូបថត",
+  },
+};

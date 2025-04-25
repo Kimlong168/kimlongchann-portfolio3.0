@@ -1,0 +1,91 @@
+export const en = {
+  header: {
+    title: "Kimlong Terminal",
+    quote: "Code. Create. Innovate.",
+  },
+  profile: {
+    name: "Kimlong Chann",
+    title: "Full Stack Developer",
+  },
+  terminal: {
+    placeholder: "Type a command...",
+    hint: "Type 'help' for a list of commands",
+  },
+  customizer: {
+    title: "Customize Theme",
+    mode: "Mode",
+    light: "Light",
+    dark: "Dark",
+    radius: "Border Radius",
+    none: "None",
+    default: "Default",
+    large: "Large",
+    colors: "Colors",
+  },
+  sections: {
+    about: "About",
+    blog: "Blog",
+    projects: "Projects",
+    experience: "Experience",
+    skills: "Skills",
+    achievements: "Achievements",
+    birthday: "Birthday",
+    "life-progress": "Life Progress",
+    gallery: "Gallery",
+  },
+  about: {
+    title: "About Me",
+    bio: "Hello! I'm a passionate full-stack developer with a love for creating interactive and user-friendly web applications. I specialize in JavaScript, React js, Next js, Node js, Express js and Nest js. Plus, I enjoy working on both the frontend and backend of applications.",
+    bio2: "When I'm not coding, you can find me exploring new technologies, or sharing my knowledge through blog posts and tutorials.",
+    download: "Download CV",
+  },
+  blog: {
+    title: "Blog Posts",
+    readMore: "Read More",
+    viewAll: "View All Posts",
+  },
+  projects: {
+    title: "Projects",
+    filterBy: "Filter by",
+    clearFilters: "Clear Filters",
+    code: "Code",
+    demo: "Demo",
+  },
+  experience: {
+    title: "Experience & Education",
+  },
+  skills: {
+    title: "Skills",
+    categories: {
+      web: "Web Development",
+      app: "App Development",
+      marketing: "Digital Marketing",
+      design: "Poster Design",
+    },
+  },
+  achievements: {
+    title: "Achievements",
+  },
+  birthday: {
+    title: "Birthday Countdown",
+    description: "Time until my next birthday",
+    days: "Days",
+    hours: "Hours",
+    minutes: "Minutes",
+    seconds: "Seconds",
+  },
+  lifeProgress: {
+    title: "Life Progress",
+    description: "Based on 90 years life expectancy",
+    progressLabel: "Life Progress",
+    years: "Years",
+    weeks: "Weeks",
+    days: "Days",
+    hours: "Hours",
+    minutes: "Minutes",
+    seconds: "Seconds",
+  },
+  gallery: {
+    title: "Photo Gallery",
+  },
+};
