@@ -1,4 +1,50 @@
 const themes = {
+  Yellow: {
+    light: {
+      background: "0 0% 100%",
+      foreground: "240 10% 3.9%",
+      card: "0 0% 100%",
+      cardForeground: "240 10% 3.9%",
+      popover: "0 0% 100%",
+      popoverForeground: "240 10% 3.9%",
+      primary: "47.9 95.8% 53.1%", // yellow-500
+      primaryForeground: "240 10% 3.9%",
+      secondary: "48 100% 91%", // yellow-100
+      secondaryForeground: "240 10% 3.9%",
+      muted: "48 100% 91%",
+      mutedForeground: "240 3.8% 46.1%",
+      accent: "48 100% 91%",
+      accentForeground: "240 10% 3.9%",
+      destructive: "0 84.2% 60.2%",
+      destructiveForeground: "0 0% 98%",
+      border: "48 100% 85%",
+      input: "48 100% 85%",
+      ring: "47.9 95.8% 53.1%",
+      radius: "0.5rem",
+    },
+    dark: {
+      background: "240 10% 3.9%",
+      foreground: "0 0% 98%",
+      card: "240 10% 3.9%",
+      cardForeground: "0 0% 98%",
+      popover: "240 10% 3.9%",
+      popoverForeground: "0 0% 98%",
+      primary: "47.9 95.8% 53.1%", // yellow-500
+      primaryForeground: "240 10% 3.9%",
+      secondary: "48 100% 20%", // dark yellow shade
+      secondaryForeground: "0 0% 98%",
+      muted: "48 100% 20%",
+      mutedForeground: "48 80% 80%",
+      accent: "48 100% 20%",
+      accentForeground: "0 0% 98%",
+      destructive: "0 62.8% 30.6%",
+      destructiveForeground: "0 0% 98%",
+      border: "48 100% 20%",
+      input: "48 100% 20%",
+      ring: "48 100% 70%",
+    },
+  },
+
   Orange: {
     light: {
       background: "0 0% 100%",

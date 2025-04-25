@@ -30,7 +30,7 @@ export const km = {
     skills: "ជំនាញ",
     achievements: "សមិទ្ធិផល",
     birthday: "ថ្ងៃកំណើត",
-    "life-progress": "វឌ្ឍនភាពជីវិត",
+    "life-progress": "ជីវិត",
     gallery: "វិចិត្រសាល",
   },
   about: {

@@ -36,6 +36,11 @@ const themes = [
     label: "Orange",
     activeColor: "bg-orange-500",
   },
+  {
+    name: "Yellow",
+    label: "Yellow",
+    activeColor: "bg-yellow-500",
+  },
 ];
 
 export default function ThemeCustomizer() {
@@ -128,7 +133,7 @@ export default function ThemeCustomizer() {
 
       <div>
         <h4 className="mb-2 text-sm font-medium">{t("customizer.colors")}</h4>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 gap-2">
           {themes.map((theme) => (
             <Button
               key={theme.name}
@@ -138,9 +143,7 @@ export default function ThemeCustomizer() {
               }`}
               onClick={() => applyTheme(theme.name)}
             >
-              <span
-                className={`h-4 w-4 rounded-full ${theme.activeColor}`}
-              ></span>
+              <div className={`h-4 w-4 rounded-full ${theme.activeColor}`} />
               <span className="text-xs">{theme.label}</span>
             </Button>
           ))}

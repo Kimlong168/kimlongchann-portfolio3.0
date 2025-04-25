@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import { useLanguage } from "@/components/language-provider"
-import { Clock } from "lucide-react"
+import { useEffect, useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { useLanguage } from "@/components/language-provider";
+import { Clock } from "lucide-react";
 
 export default function LifeProgress() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
   const [progress, setProgress] = useState({
     years: 0,
     weeks: 0,
@@ -16,25 +16,25 @@ export default function LifeProgress() {
     minutes: 0,
     seconds: 0,
     percentage: 0,
-  })
+  });
 
   useEffect(() => {
     const calculateProgress = () => {
-      const birthDate = new Date(2003, 2, 11) // March 11, 2003
-      const now = new Date()
+      const birthDate = new Date(2003, 2, 11); // March 11, 2003
+      const now = new Date();
 
       // Calculate age in different units
-      const ageInMilliseconds = now.getTime() - birthDate.getTime()
-      const ageInSeconds = Math.floor(ageInMilliseconds / 1000)
-      const ageInMinutes = Math.floor(ageInSeconds / 60)
-      const ageInHours = Math.floor(ageInMinutes / 60)
-      const ageInDays = Math.floor(ageInHours / 24)
-      const ageInWeeks = Math.floor(ageInDays / 7)
-      const ageInYears = Math.floor(ageInDays / 365.25)
+      const ageInMilliseconds = now.getTime() - birthDate.getTime();
+      const ageInSeconds = Math.floor(ageInMilliseconds / 1000);
+      const ageInMinutes = Math.floor(ageInSeconds / 60);
+      const ageInHours = Math.floor(ageInMinutes / 60);
+      const ageInDays = Math.floor(ageInHours / 24);
+      const ageInWeeks = Math.floor(ageInDays / 7);
+      const ageInYears = Math.floor(ageInDays / 365.25);
 
       // Calculate percentage of life lived (assuming 90 years lifespan)
-      const lifeExpectancy = 90 * 365.25 * 24 * 60 * 60 * 1000 // 90 years in milliseconds
-      const percentageLived = (ageInMilliseconds / lifeExpectancy) * 100
+      const lifeExpectancy = 90 * 365.25 * 24 * 60 * 60 * 1000; // 90 years in milliseconds
+      const percentageLived = (ageInMilliseconds / lifeExpectancy) * 100;
 
       setProgress({
         years: ageInYears,
@@ -44,14 +44,14 @@ export default function LifeProgress() {
         minutes: ageInMinutes,
         seconds: ageInSeconds,
         percentage: percentageLived,
-      })
-    }
+      });
+    };
 
-    calculateProgress()
-    const timer = setInterval(calculateProgress, 1000)
+    calculateProgress();
+    const timer = setInterval(calculateProgress, 1000);
 
-    return () => clearInterval(timer)
-  }, [])
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <Card>
@@ -60,13 +60,19 @@ export default function LifeProgress() {
           <Clock className="h-5 w-5 text-primary" />
           <CardTitle>{t("lifeProgress.title")}</CardTitle>
         </div>
-        <p className="text-sm text-muted-foreground">{t("lifeProgress.description")}</p>
+        <p className="text-sm text-muted-foreground">
+          {t("lifeProgress.description")}
+        </p>
       </CardHeader>
       <CardContent>
         <div className="mb-6">
           <div className="flex justify-between mb-1">
-            <span className="text-sm font-medium">{t("lifeProgress.progressLabel")}</span>
-            <span className="text-sm font-medium">{progress.percentage.toFixed(6)}%</span>
+            <span className="text-sm font-medium">
+              {t("lifeProgress.progressLabel")}
+            </span>
+            <span className="text-sm font-medium">
+              {progress.percentage.toFixed(6)}%
+            </span>
           </div>
           <Progress value={progress.percentage} className="h-2" />
         </div>
@@ -74,30 +80,42 @@ export default function LifeProgress() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div className="bg-muted rounded-lg p-3 text-center">
             <div className="text-2xl font-bold">{progress.years}</div>
-            <div className="text-xs uppercase text-muted-foreground">{t("lifeProgress.years")}</div>
+            <div className="text-xs uppercase text-muted-foreground">
+              {t("lifeProgress.years")}
+            </div>
           </div>
           <div className="bg-muted rounded-lg p-3 text-center">
             <div className="text-2xl font-bold">{progress.weeks}</div>
-            <div className="text-xs uppercase text-muted-foreground">{t("lifeProgress.weeks")}</div>
+            <div className="text-xs uppercase text-muted-foreground">
+              {t("lifeProgress.weeks")}
+            </div>
           </div>
           <div className="bg-muted rounded-lg p-3 text-center">
             <div className="text-2xl font-bold">{progress.days}</div>
-            <div className="text-xs uppercase text-muted-foreground">{t("lifeProgress.days")}</div>
+            <div className="text-xs uppercase text-muted-foreground">
+              {t("lifeProgress.days")}
+            </div>
           </div>
           <div className="bg-muted rounded-lg p-3 text-center">
             <div className="text-2xl font-bold">{progress.hours}</div>
-            <div className="text-xs uppercase text-muted-foreground">{t("lifeProgress.hours")}</div>
+            <div className="text-xs uppercase text-muted-foreground">
+              {t("lifeProgress.hours")}
+            </div>
           </div>
           <div className="bg-muted rounded-lg p-3 text-center">
             <div className="text-2xl font-bold">{progress.minutes}</div>
-            <div className="text-xs uppercase text-muted-foreground">{t("lifeProgress.minutes")}</div>
+            <div className="text-xs uppercase text-muted-foreground">
+              {t("lifeProgress.minutes")}
+            </div>
           </div>
           <div className="bg-muted rounded-lg p-3 text-center">
             <div className="text-2xl font-bold">{progress.seconds}</div>
-            <div className="text-xs uppercase text-muted-foreground">{t("lifeProgress.seconds")}</div>
+            <div className="text-xs uppercase text-muted-foreground">
+              {t("lifeProgress.seconds")}
+            </div>
           </div>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

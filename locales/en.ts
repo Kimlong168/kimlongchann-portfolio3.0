@@ -30,7 +30,7 @@ export const en = {
     skills: "Skills",
     achievements: "Achievements",
     birthday: "Birthday",
-    "life-progress": "Life Progress",
+    "life-progress": "Life",
     gallery: "Gallery",
   },
   about: {
