@@ -8,6 +8,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useLanguage } from "@/components/language-provider";
 import { useThemeContext } from "@/components/theme-data-provider";
 import { cn } from "@/lib/utils";
+import { Check } from "lucide-react";
 const themes = [
   {
     name: "Zinc",
@@ -102,7 +103,9 @@ export default function ThemeCustomizer() {
               className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-transparent p-2 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
             >
               <span className="mb-1 text-xs">{t("customizer.none")}</span>
-              <span className="w-10 h-4 rounded-none bg-primary"></span>
+              <span className="w-10 h-4 rounded-none bg-primary grid place-content-center">
+                {radius === "0" && <Check className="size-4 text-secondary" />}
+              </span>
             </Label>
           </div>
           <div>
@@ -116,8 +119,12 @@ export default function ThemeCustomizer() {
                 style={{
                   borderRadius: "4px",
                 }}
-                className="w-10 h-4  bg-primary"
-              ></span>
+                className="w-10 h-4 bg-primary grid place-content-center"
+              >
+                {radius === "0.5rem" && (
+                  <Check className="size-4 text-secondary" />
+                )}
+              </span>
             </Label>
           </div>
           <div>
@@ -131,8 +138,12 @@ export default function ThemeCustomizer() {
                 style={{
                   borderRadius: "6px",
                 }}
-                className="w-10 h-4  bg-primary"
-              ></span>
+                className="w-10 h-4 bg-primary grid place-content-center"
+              >
+                {radius === "1rem" && (
+                  <Check className="size-4 text-secondary" />
+                )}
+              </span>
             </Label>
           </div>
         </RadioGroup>

@@ -30,15 +30,6 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {/* <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <LanguageProvider>{children}</LanguageProvider>
-        </ThemeProvider> */}
-
         <NextThemesProvider
           attribute="class"
           defaultTheme="dark"
