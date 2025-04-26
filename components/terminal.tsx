@@ -186,7 +186,7 @@ export default function Terminal() {
           <div className="w-3 h-3 rounded-full bg-green-500"></div>
         </div>
         <div className="text-sm font-medium truncate">
-          <span className="hidden md:inline">{t("header.title")}— </span>
+          <span className="hidden md:inline">{t("header.title")} — </span>
           {t("header.quote")}
         </div>
         <div className="flex items-center space-x-2">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -47,9 +47,7 @@ const themes = [
 export default function ThemeCustomizer() {
   const { t } = useLanguage();
 
-  const [radius, setRadius] = useState("0.5rem");
-
-  const { themeColor, setThemeColor } = useThemeContext();
+  const { themeColor, setThemeColor, radius, setRadius } = useThemeContext();
   const { theme, setTheme } = useTheme();
 
   const applyTheme = (themeName: string) => {
@@ -58,7 +56,6 @@ export default function ThemeCustomizer() {
 
   const applyRadius = (value: string) => {
     setRadius(value);
-    document.documentElement.style.setProperty("--radius", value);
   };
 
   return (

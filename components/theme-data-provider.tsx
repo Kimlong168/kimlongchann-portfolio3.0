@@ -18,31 +18,47 @@ export default function ThemeDataProvider({
     try {
       return (localStorage.getItem("themeColor") as ThemeColors) || "Zinc";
     } catch (error) {
-      "Zinc" as ThemeColors;
+      return "Zinc" as ThemeColors;
+    }
+  };
+
+  const getSavedRadius = () => {
+    try {
+      return localStorage.getItem("radius") || "0.5rem";
+    } catch (error) {
+      return "0.5rem";
     }
   };
 
   const [themeColor, setThemeColor] = useState<ThemeColors>(
     getSavedThemeColor() as ThemeColors
   );
+  const [radius, setRadius] = useState(getSavedRadius());
   const [isMounted, setIsMounted] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
+    // theme
     localStorage.setItem("themeColor", themeColor);
     setGlobalColorTheme(theme as "light" | "dark", themeColor);
+
+    // radius
+    localStorage.setItem("radius", radius);
+    document.documentElement.style.setProperty("--radius", radius);
 
     if (!isMounted) {
       setIsMounted(true);
     }
-  }, [themeColor, theme]);
+  }, [themeColor, theme, radius]);
 
   if (!isMounted) {
     return null;
   }
 
   return (
-    <ThemeContext.Provider value={{ themeColor, setThemeColor }}>
+    <ThemeContext.Provider
+      value={{ themeColor, setThemeColor, radius, setRadius }}
+    >
       {children}
     </ThemeContext.Provider>
   );
