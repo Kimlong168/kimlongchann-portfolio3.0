@@ -72,7 +72,7 @@ export default function ExperienceSection() {
         {experiences.map((exp, index) => (
           <div key={exp.id} className="mb-10 relative">
             {/* Timeline dot */}
-            <div className="absolute w-4 h-4 bg-primary rounded-full -left-[0.81rem] top-1.5"></div>
+            <div className="absolute w-4 h-4 bg-primary rounded-full -left-[33px] -top-1.5"></div>
 
             <Card className="ml-4">
               <CardContent className="p-4">

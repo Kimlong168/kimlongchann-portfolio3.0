@@ -23,6 +23,8 @@ import {
   FileText,
   Palette,
   Facebook,
+  Star,
+  X,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -42,6 +44,7 @@ import AchievementsSection from "@/components/sections/achievements-section";
 import BirthdayCountdown from "@/components/sections/birthday-countdown";
 import LifeProgress from "@/components/sections/life-progress";
 import Gallery from "@/components/sections/gallery";
+import { cn } from "@/lib/utils";
 
 const sections = [
   { id: "about", label: "About", icon: <User className="w-4 h-4 mr-2" /> },
@@ -49,7 +52,7 @@ const sections = [
   {
     id: "projects",
     label: "Projects",
-    icon: <Code className="w-4 h-4 mr-2" />,
+    icon: <Star className="w-4 h-4 mr-2" />,
   },
   {
     id: "experience",
@@ -60,7 +63,7 @@ const sections = [
   {
     id: "achievements",
     label: "Achievements",
-    icon: <Award className="w-4 h-4 mr-2" />,
+    icon: <Award className="w-4 h-4 min-w-4 mr-2" />,
   },
   {
     id: "birthday",
@@ -228,9 +231,12 @@ export default function Terminal() {
       </div>
 
       {/* Terminal Content */}
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden relative">
         {/* Main Content */}
-        <div className="flex-1 overflow-auto p-4">
+        <div
+          onClick={() => setShowCustomizer(false)}
+          className={cn("flex-1 overflow-auto p-4")}
+        >
           {/* Header with social links */}
           <div className="mb-6">
             <h1 className="text-2xl font-bold mb-2">{t("profile.name")}</h1>
@@ -339,16 +345,18 @@ export default function Terminal() {
 
         {/* Theme Customizer Sidebar */}
         {showCustomizer && (
-          <div className="w-64 border-l border-border bg-muted p-4 overflow-auto">
+          <div className="absolute top-0 right-0 bottom-0 w-64 border-l border-border bg-muted p-4 overflow-auto">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-medium">{t("customizer.title")}</h3>
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setShowCustomizer(false)}
-                className="h-6 w-6"
+                className="h-6 w-6 hover:bg-black/50 hover:text-white"
               >
-                <span>×</span>
+                <span>
+                  <X />
+                </span>
               </Button>
             </div>
             <ThemeCustomizer />
