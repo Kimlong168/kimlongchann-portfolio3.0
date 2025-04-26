@@ -43,21 +43,21 @@ const projects = [
   },
   {
     id: 4,
+    title: "ERobot offcial website",
+    description:
+      "We aim to build a website for our organization to perform important tasks and enhance our efforts in educating the Cambodian young generation about innovation and the latest technology for Industry 4.0",
+    techStack: ["React", "Laravel", "Mysql", "Tailwind CSS"],
+    link: "https://erobotkh.org/",
+    demo: "https://erobotkh.org/",
+  },
+  {
+    id: 5,
     title: "Attendance Checkpoint",
     description:
       "The Attendance Checkpoint System is a web-based platform for efficient attendance management, featuring employee check-in/out, leave requests, and client visit logs. It includes an admin dashboard for oversight and integrates with Telegram for real-time notifications. Built using React.js, Node.js, Express, MongoDB, and Tailwind CSS, the system ensures a seamless and scalable solution for attendance tracking and communication.",
     techStack: ["React", "Express", "Tailwind CSS", "MongoDB"],
     link: "https://github.com/Kimlong168/CIT_attendance_checkpoint_api.git",
     demo: "https://github.com/Kimlong168/CIT_attendance_checkpoint_api.git",
-  },
-  {
-    id: 5,
-    title: "E-robot offcial website",
-    description:
-      "We aim to build a website for our organization to perform important tasks and enhance our efforts in educating the Cambodian young generation about innovation and the latest technology for Industry 4.0",
-    techStack: ["React", "Laravel", "Mysql", "Tailwind CSS"],
-    link: "#",
-    demo: "#",
   },
   {
     id: 6,
