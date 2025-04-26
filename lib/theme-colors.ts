@@ -33,8 +33,8 @@ const themes = {
       primaryForeground: "240 10% 3.9%",
       secondary: "48 100% 20%", // dark yellow shade
       secondaryForeground: "0 0% 98%",
-      muted: "48 100% 20%",
-      mutedForeground: "48 80% 80%",
+      muted: "217.2 32.6% 17.5%",
+      mutedForeground: "215 20.2% 65.1%",
       accent: "48 100% 20%",
       accentForeground: "0 0% 98%",
       destructive: "0 62.8% 30.6%",
