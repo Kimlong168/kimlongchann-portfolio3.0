@@ -26,8 +26,13 @@ const images = [
     alt: "Gallery image 1",
     caption: "Techo Scholarship Award",
   },
+  {
+    id: 4,
+    src: "https://kimlongchann.dev/og-image.png",
+    alt: "Gallery image 1",
+    caption: "Nothing, it's just me!",
+  },
 ];
-
 export default function Gallery() {
   const { t } = useLanguage();
   const [selectedImage, setSelectedImage] = useState<(typeof images)[0] | null>(

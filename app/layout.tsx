@@ -61,6 +61,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta
+          property="og:image"
+          content="https://kimlongchann.dev/og-image.png"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kimlongchann.dev" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-mono antialiased",
