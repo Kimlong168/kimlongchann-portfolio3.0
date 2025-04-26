@@ -14,7 +14,44 @@ const fontSans = FontSans({
 
 export const metadata: Metadata = {
   title: "Kimlong Chann - Full Stack Developer",
-  description: "Hi there, I am Kimlong Chann, a full stack developer.",
+  description:
+    "Hi there, I am Kimlong Chann, a full stack developer specializing in building modern web applications using React, Node.js, Laravel, and more.",
+  keywords: [
+    "Kimlong Chann",
+    "Full Stack Developer",
+    "Web Developer",
+    "React Developer",
+    "Node.js",
+    "Laravel",
+    "Portfolio",
+    "Software Engineer",
+  ],
+  authors: [{ name: "Kimlong Chann", url: "https://kimlongchann.dev" }],
+  creator: "Kimlong Chann",
+  publisher: "Kimlong Chann",
+  openGraph: {
+    title: "Kimlong Chann - Full Stack Developer",
+    description:
+      "Hi there, I am Kimlong Chann, a full stack developer specializing in building modern web applications using React, Node.js, Laravel, and more.",
+    url: "https://kimlongchann.dev",
+    siteName: "Kimlong Chann",
+    type: "website",
+    images: [
+      {
+        url: "https://kimlongchann.dev/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Kimlong Chann - Full Stack Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kimlong Chann - Full Stack Developer",
+    description:
+      "Hi there, I am Kimlong Chann, a full stack developer specializing in building modern web applications using React, Node.js, Laravel, and more.",
+    images: ["https://kimlongchann.dev/og-image.png"],
+  },
 };
 
 export default function RootLayout({
