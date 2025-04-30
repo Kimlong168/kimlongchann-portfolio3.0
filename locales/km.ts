@@ -77,7 +77,7 @@ export const km = {
   },
   lifeProgress: {
     title: "វឌ្ឍនភាពជីវិត",
-    description: "ផ្អែកលើអាយុកាលរំពឹងទុក 71 ឆ្នាំ",
+    description: "ផ្អែកលើអាយុកាលរំពឹងទុក 85 ឆ្នាំ",
     progressLabel: "វឌ្ឍនភាពជីវិត",
     years: "ឆ្នាំ",
     weeks: "សប្តាហ៍",

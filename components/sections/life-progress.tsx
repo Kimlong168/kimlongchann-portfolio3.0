@@ -34,7 +34,7 @@ export default function LifeProgress() {
       const ageInYears = Math.floor(ageInDays / 365.25);
 
       // Calculate percentage of life lived (assuming 90 years lifespan)
-      const lifeExpectancy = 71 * 365.25 * 24 * 60 * 60 * 1000; // 85 years in milliseconds
+      const lifeExpectancy = 85 * 365.25 * 24 * 60 * 60 * 1000; // 85 years in milliseconds
       const percentageLived = (ageInMilliseconds / lifeExpectancy) * 100;
 
       setProgress({
@@ -63,9 +63,9 @@ export default function LifeProgress() {
         </div>
         <p className="text-sm text-muted-foreground flex gap-3 items-center">
           {t("lifeProgress.description")}{" "}
-          <Link href="https://www.macrotrends.net/global-metrics/countries/KHM/cambodia/life-expectancy">
+          {/* <Link href="https://www.macrotrends.net/global-metrics/countries/KHM/cambodia/life-expectancy">
             <SquareArrowOutUpRight size={18} />
-          </Link>
+          </Link> */}
         </p>
       </CardHeader>
       <CardContent>
