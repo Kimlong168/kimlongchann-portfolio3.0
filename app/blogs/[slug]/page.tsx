@@ -1,4 +1,3 @@
-export const revalidate = 60;
 import { getArticleDetail, getArticles } from "@/api";
 import { DataNotFound } from "@/components/molecules/data-not-found";
 import { SharingArticle } from "@/components/organisms/sharing-article";
@@ -7,11 +6,6 @@ import { formatDate } from "@/utils/format-date";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { ChevronRight } from "lucide-react";
 import { Metadata } from "next";
-
-export async function generateStaticParams() {
-  const { data } = await getArticles();
-  return data.map((x) => ({ slug: x.slug }));
-}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -39,6 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [cover],
     },
   };
+}
+
+export async function generateStaticParams() {
+  const { data } = await getArticles();
+  return data.map((x) => ({ slug: x.slug }));
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
