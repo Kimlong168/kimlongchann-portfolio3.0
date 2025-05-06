@@ -1,3 +1,4 @@
+export const revalidate = 60;
 import { getArticleDetail, getArticles } from "@/api";
 import { DataNotFound } from "@/components/molecules/data-not-found";
 import { SharingArticle } from "@/components/organisms/sharing-article";
@@ -6,8 +7,6 @@ import { formatDate } from "@/utils/format-date";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { ChevronRight } from "lucide-react";
 import { Metadata } from "next";
-
-export const revalidate = 120; // Revalidate at most once every 120 seconds
 
 export async function generateStaticParams() {
   const { data } = await getArticles();

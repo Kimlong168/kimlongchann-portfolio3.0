@@ -29,29 +29,29 @@ export const metadata: Metadata = {
   authors: [{ name: "Kimlong Chann", url: "https://kimlongchann.dev" }],
   creator: "Kimlong Chann",
   publisher: "Kimlong Chann",
-  openGraph: {
-    title: "Kimlong Chann - Full Stack Developer",
-    description:
-      "Hi there, I am Kimlong Chann, a full stack developer specializing in building modern web applications using React, Node.js, Laravel, and more.",
-    url: "https://kimlongchann.dev",
-    siteName: "Kimlong Chann",
-    type: "website",
-    images: [
-      {
-        url: "https://kimlongchann.dev/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Kimlong Chann - Full Stack Developer",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Kimlong Chann - Full Stack Developer",
-    description:
-      "Hi there, I am Kimlong Chann, a full stack developer specializing in building modern web applications using React, Node.js, Laravel, and more.",
-    images: ["https://kimlongchann.dev/og-image.png"],
-  },
+  // openGraph: {
+  //   title: "Kimlong Chann - Full Stack Developer",
+  //   description:
+  //     "Hi there, I am Kimlong Chann, a full stack developer specializing in building modern web applications using React, Node.js, Laravel, and more.",
+  //   url: "https://kimlongchann.dev",
+  //   siteName: "Kimlong Chann",
+  //   type: "website",
+  //   images: [
+  //     {
+  //       url: "https://kimlongchann.dev/og-image.png",
+  //       width: 1200,
+  //       height: 630,
+  //       alt: "Kimlong Chann - Full Stack Developer",
+  //     },
+  //   ],
+  // },
+  // twitter: {
+  //   card: "summary_large_image",
+  //   title: "Kimlong Chann - Full Stack Developer",
+  //   description:
+  //     "Hi there, I am Kimlong Chann, a full stack developer specializing in building modern web applications using React, Node.js, Laravel, and more.",
+  //   images: ["https://kimlongchann.dev/og-image.png"],
+  // },
 };
 
 export default function RootLayout({
@@ -61,6 +61,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="icon"
+          type="image/png"
+          href="/meta/favicon-96x96.png"
+          sizes="96x96"
+        />
+        <link rel="icon" type="image/svg+xml" href="/meta/favicon.svg" />
+        <link rel="shortcut icon" href="/meta/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/meta/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="/meta/site.webmanifest" />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-mono antialiased",
