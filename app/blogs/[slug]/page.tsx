@@ -24,7 +24,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: description,
       type: "website",
       url: `http://kimlongchann.dev/blogs/${slug}`,
-      images: [cover],
+      images: [
+        {
+          url: cover,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
@@ -40,8 +47,8 @@ export async function generateStaticParams() {
   return data.map((x) => ({ slug: x.slug }));
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const slug = params?.slug;
+export default async function Page({ params }: Props) {
+  const { slug } = await params;
 
   const article = await getArticleDetail(slug);
 
