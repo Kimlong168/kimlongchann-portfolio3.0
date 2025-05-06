@@ -10,6 +10,9 @@ export const en = {
   terminal: {
     placeholder: "Type a command...",
     hint: "Type 'help' for a list of commands",
+    exit: "Type 'exit' to go back",
+    loading: "loading...",
+    notFound: "No data found!",
   },
   customizer: {
     title: "Customize Theme",

@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Download } from "lucide-react";
-import { useLanguage } from "@/components/language-provider";
+import { useLanguage } from "@/contexts/language-provider";
 
 export default function AboutSection() {
   const { t } = useLanguage();

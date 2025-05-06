@@ -10,6 +10,9 @@ export const km = {
   terminal: {
     placeholder: "វាយពាក្យបញ្ជា...",
     hint: "វាយ 'help' សម្រាប់បញ្ជីពាក្យបញ្ជា",
+    exit: "វាយ 'exit' ដើម្បីចាកចេញ",
+    loading: "កំពុងដំណើរការ...",
+    notFound: "គ្មានទិន្នន័យ!",
   },
   customizer: {
     title: "ប្ដូរតាមចិត្ត",

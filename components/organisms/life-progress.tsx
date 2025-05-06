@@ -3,9 +3,8 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { useLanguage } from "@/components/language-provider";
-import { Clock, SquareArrowOutUpRight } from "lucide-react";
-import Link from "next/link";
+import { useLanguage } from "@/contexts/language-provider";
+import { Clock } from "lucide-react";
 
 export default function LifeProgress() {
   const { t } = useLanguage();
@@ -18,6 +17,15 @@ export default function LifeProgress() {
     seconds: 0,
     percentage: 0,
   });
+
+  const progressItems = [
+    { label: "lifeProgress.years", value: progress.years },
+    { label: "lifeProgress.weeks", value: progress.weeks },
+    { label: "lifeProgress.days", value: progress.days },
+    { label: "lifeProgress.hours", value: progress.hours },
+    { label: "lifeProgress.minutes", value: progress.minutes },
+    { label: "lifeProgress.seconds", value: progress.seconds },
+  ];
 
   useEffect(() => {
     const calculateProgress = () => {
@@ -63,9 +71,6 @@ export default function LifeProgress() {
         </div>
         <p className="text-sm text-muted-foreground flex gap-3 items-center">
           {t("lifeProgress.description")}{" "}
-          {/* <Link href="https://www.macrotrends.net/global-metrics/countries/KHM/cambodia/life-expectancy">
-            <SquareArrowOutUpRight size={18} />
-          </Link> */}
         </p>
       </CardHeader>
       <CardContent>
@@ -82,42 +87,14 @@ export default function LifeProgress() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <div className="bg-muted rounded-lg p-3 text-center">
-            <div className="text-2xl font-bold">{progress.years}</div>
-            <div className="text-xs uppercase text-muted-foreground">
-              {t("lifeProgress.years")}
+          {progressItems.map((item, index) => (
+            <div key={index} className="bg-muted rounded-lg p-3 text-center">
+              <div className="text-2xl font-bold">{item.value}</div>
+              <div className="text-xs uppercase text-muted-foreground">
+                {t(item.label)}
+              </div>
             </div>
-          </div>
-          <div className="bg-muted rounded-lg p-3 text-center">
-            <div className="text-2xl font-bold">{progress.weeks}</div>
-            <div className="text-xs uppercase text-muted-foreground">
-              {t("lifeProgress.weeks")}
-            </div>
-          </div>
-          <div className="bg-muted rounded-lg p-3 text-center">
-            <div className="text-2xl font-bold">{progress.days}</div>
-            <div className="text-xs uppercase text-muted-foreground">
-              {t("lifeProgress.days")}
-            </div>
-          </div>
-          <div className="bg-muted rounded-lg p-3 text-center">
-            <div className="text-2xl font-bold">{progress.hours}</div>
-            <div className="text-xs uppercase text-muted-foreground">
-              {t("lifeProgress.hours")}
-            </div>
-          </div>
-          <div className="bg-muted rounded-lg p-3 text-center">
-            <div className="text-2xl font-bold">{progress.minutes}</div>
-            <div className="text-xs uppercase text-muted-foreground">
-              {t("lifeProgress.minutes")}
-            </div>
-          </div>
-          <div className="bg-muted rounded-lg p-3 text-center">
-            <div className="text-2xl font-bold">{progress.seconds}</div>
-            <div className="text-xs uppercase text-muted-foreground">
-              {t("lifeProgress.seconds")}
-            </div>
-          </div>
+          ))}
         </div>
       </CardContent>
     </Card>

@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 import { Mona_Sans as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { LanguageProvider } from "@/components/language-provider";
+import { LanguageProvider } from "@/contexts/language-provider";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import ThemeDataProvider from "@/components/theme-data-provider";
-
+import ThemeDataProvider from "@/contexts/theme-provider";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -67,16 +67,18 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <NextThemesProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ThemeDataProvider>
-            <LanguageProvider>{children}</LanguageProvider>
-          </ThemeDataProvider>
-        </NextThemesProvider>
+        <NuqsAdapter>
+          <NextThemesProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ThemeDataProvider>
+              <LanguageProvider>{children}</LanguageProvider>
+            </ThemeDataProvider>
+          </NextThemesProvider>
+        </NuqsAdapter>
       </body>
     </html>
   );
