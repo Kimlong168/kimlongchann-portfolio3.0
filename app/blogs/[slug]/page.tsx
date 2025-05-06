@@ -1,5 +1,6 @@
 import { getArticleDetail, getArticles } from "@/api";
 import { DataNotFound } from "@/components/molecules/data-not-found";
+import { SharingArticle } from "@/components/organisms/sharing-article";
 import TerminalWrapper from "@/components/templates/terminal-wrapper";
 import { formatDate } from "@/utils/format-date";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
@@ -43,10 +44,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const slug = params?.slug;
-
-  if (!slug) {
-    return <DataNotFound />;
-  }
 
   const article = await getArticleDetail(slug);
 
@@ -101,6 +98,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
               {article.content && <BlocksRenderer content={article.content} />}
             </div>
           </div>
+
+          <SharingArticle title={article.title} />
         </div>
       </TerminalWrapper>
     </div>
