@@ -67,17 +67,19 @@ const sections = [
 interface Props {
   children: React.ReactNode;
   commandType?: string;
+  showCustomizer?: boolean;
+  setShowCustomizer?: (v: boolean) => void;
 }
 
-const TerminalWrapper: React.FC<Props> = ({ children, commandType }) => {
+const TerminalWrapper: React.FC<Props> = (props) => {
+  const { children, commandType, showCustomizer, setShowCustomizer } = props;
   const router = useRouter();
   const { theme, setTheme } = useTheme();
-  const { language, setLanguage, t } = useLanguage();
+  const { setLanguage, t } = useLanguage();
   const [activeTab, setActiveTab] = useState("about");
   const [input, setInput] = useState("");
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
-  const [showCustomizer, setShowCustomizer] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
@@ -126,7 +128,7 @@ const TerminalWrapper: React.FC<Props> = ({ children, commandType }) => {
     } else if (command === "lang km") {
       setLanguage("km");
     } else if (command === "customize") {
-      setShowCustomizer(true);
+      setShowCustomizer?.(true);
     }
   };
 
@@ -211,7 +213,7 @@ const TerminalWrapper: React.FC<Props> = ({ children, commandType }) => {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setShowCustomizer(!showCustomizer)}
+            onClick={() => setShowCustomizer?.(!showCustomizer)}
             className="h-8 w-8"
           >
             <Palette className="h-4 w-4" />

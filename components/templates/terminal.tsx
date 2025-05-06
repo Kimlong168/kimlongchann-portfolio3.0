@@ -102,7 +102,10 @@ const Terminal: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <TerminalWrapper>
+    <TerminalWrapper
+      showCustomizer={showCustomizer}
+      setShowCustomizer={setShowCustomizer}
+    >
       <div className="flex flex-1 overflow-hidden relative">
         <div
           onClick={() => setShowCustomizer(false)}

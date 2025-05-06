@@ -42,7 +42,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const article = await getArticleDetail(params.slug || "");
+  const slug = params?.slug;
+
+  if (!slug) {
+    return <DataNotFound />;
+  }
+
+  const article = await getArticleDetail(slug);
 
   if (!article) {
     return <DataNotFound />;

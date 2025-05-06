@@ -77,6 +77,7 @@ const ThemeCustomizer: React.FC<Props> = ({ onHideThemeCustomizer }) => {
           </span>
         </Button>
       </div>
+
       <div className="grid gap-4">
         <div>
           <h4 className="mb-2 text-sm font-medium">{t("customizer.mode")}</h4>
