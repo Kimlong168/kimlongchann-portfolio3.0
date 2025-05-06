@@ -97,7 +97,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
             </div>
           </div>
 
-          <SharingArticle title={article.title} />
+          <SharingArticle
+            title={article.title}
+            url={`${process.env.NEXT_PUBLIC_CLIENT_URL}/blogs/${slug}`}
+          />
         </div>
       </TerminalWrapper>
     </div>

@@ -7,20 +7,13 @@ import {
   Share2,
   Twitter,
 } from "lucide-react";
-export const SharingArticle = ({ title }: { title: string }) => {
-  // Get share URL and title
-  const getShareUrl = () => {
-    if (typeof window === "undefined") return { url: "", title: "" };
-    return {
-      url: encodeURIComponent(window.location.href),
-      title: encodeURIComponent(title),
-    };
-  };
 
-  // Handle native sharing if available
+interface Props {
+  title: string;
+  url: string;
+}
+export const SharingArticle: React.FC<Props> = ({ title, url }) => {
   const handleShare = async () => {
-    const { url, title } = getShareUrl();
-
     if (navigator.share) {
       try {
         await navigator.share({
@@ -58,9 +51,7 @@ export const SharingArticle = ({ title }: { title: string }) => {
         <div className="flex space-x-4">
           {/* Facebook */}
           <a
-            href={`https://www.facebook.com/sharer/sharer.php?u=${
-              getShareUrl().url
-            }`}
+            href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center hover:text-terminal-green transition-colors"
@@ -72,9 +63,7 @@ export const SharingArticle = ({ title }: { title: string }) => {
 
           {/* X (Twitter) */}
           <a
-            href={`https://twitter.com/intent/tweet?text=${
-              getShareUrl().title
-            }&url=${getShareUrl().url}`}
+            href={`https://twitter.com/intent/tweet?text=${title}&url=${url}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center hover:text-terminal-green transition-colors"
@@ -86,9 +75,7 @@ export const SharingArticle = ({ title }: { title: string }) => {
 
           {/* Telegram */}
           <a
-            href={`https://t.me/share/url?url=${getShareUrl().url}&text=${
-              getShareUrl().title
-            }`}
+            href={`https://t.me/share/url?url=${url}&text=${title}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center hover:text-terminal-green transition-colors"
@@ -100,9 +87,7 @@ export const SharingArticle = ({ title }: { title: string }) => {
 
           {/* LinkedIn */}
           <a
-            href={`https://www.linkedin.com/sharing/share-offsite/?url=${
-              getShareUrl().url
-            }`}
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center hover:text-terminal-green transition-colors"
