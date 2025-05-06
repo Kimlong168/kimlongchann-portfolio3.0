@@ -50,7 +50,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen p-4 md:p-8">
       <TerminalWrapper commandType="exit">
         <div className="flex-1 overflow-auto p-4">
           {/* Article metadata */}
