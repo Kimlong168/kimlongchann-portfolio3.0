@@ -22,7 +22,6 @@ import {
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
-import ThemeCustomizer from "@/components/organisms/theme-customizer";
 import AboutSection from "@/components/organisms/about-section";
 import BlogSection from "@/components/organisms/blog-section";
 import ProjectsSection from "@/components/organisms/projects-section";
@@ -83,7 +82,6 @@ interface Props {
 }
 
 const Terminal: React.FC<Props> = (props) => {
-  const [showCustomizer, setShowCustomizer] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
@@ -102,26 +100,10 @@ const Terminal: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <TerminalWrapper
-      showCustomizer={showCustomizer}
-      setShowCustomizer={setShowCustomizer}
-    >
-      <div className="flex flex-1 overflow-hidden relative">
-        <div
-          onClick={() => setShowCustomizer(false)}
-          className={cn("flex-1 overflow-auto p-4")}
-        >
-          <Header />
-          <Separator className="my-4" />
-          <Content {...props} />
-        </div>
-
-        {showCustomizer && (
-          <ThemeCustomizer
-            onHideThemeCustomizer={() => setShowCustomizer(false)}
-          />
-        )}
-      </div>
+    <TerminalWrapper>
+      <Header />
+      <Separator className="my-4" />
+      <Content {...props} />
     </TerminalWrapper>
   );
 };

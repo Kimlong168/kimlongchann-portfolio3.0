@@ -27,6 +27,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import ThemeCustomizer from "../organisms/theme-customizer";
+import Link from "next/link";
 
 const sections = [
   { id: "about", label: "About", icon: <User className="w-4 h-4 mr-2" /> },
@@ -67,12 +69,10 @@ const sections = [
 interface Props {
   children: React.ReactNode;
   commandType?: string;
-  showCustomizer?: boolean;
-  setShowCustomizer?: (v: boolean) => void;
 }
 
 const TerminalWrapper: React.FC<Props> = (props) => {
-  const { children, commandType, showCustomizer, setShowCustomizer } = props;
+  const { children, commandType } = props;
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const { setLanguage, t } = useLanguage();
@@ -82,6 +82,7 @@ const TerminalWrapper: React.FC<Props> = (props) => {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
+  const [showCustomizer, setShowCustomizer] = useState(false);
 
   useEffect(() => {
     // Focus input on mount and when clicking anywhere in the terminal
@@ -166,89 +167,102 @@ const TerminalWrapper: React.FC<Props> = (props) => {
   };
 
   return (
-    <div
-      ref={terminalRef}
-      className="w-full max-w-6xl mx-auto rounded-lg border border-border bg-background shadow-lg overflow-hidden flex flex-col h-[90vh]"
-    >
-      {/* Terminal Header */}
-      <div className="flex items-center justify-between gap-2 p-2 bg-muted border-b border-border">
-        <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 rounded-full bg-red-500"></div>
-          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-          <div className="w-3 h-3 rounded-full bg-green-500"></div>
-        </div>
-        <div className="text-sm font-medium truncate">
-          <span className="hidden md:inline">{t("header.title")} — </span>
-          {t("header.quote")}
-        </div>
-        <div className="flex items-center space-x-2">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-8 w-8">
-                <Globe className="h-4 w-4" />
-                <span className="sr-only">Toggle language</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setLanguage("en")}>
-                🇺🇸 English
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLanguage("km")}>
-                🇰🇭 ខ្មែរ
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+    <div className="flex min-h-screen flex-col items-center justify-between p-4 md:p-8">
+      <div
+        ref={terminalRef}
+        className="w-full max-w-6xl mx-auto rounded-lg border border-border bg-background shadow-lg overflow-hidden flex flex-col h-[90vh]"
+      >
+        {/* Terminal Header */}
+        <div className="flex items-center justify-between gap-2 p-2 bg-muted border-b border-border">
+          <Link href="/" className="flex items-center space-x-2">
+            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+          </Link>
+          <div className="text-sm font-medium truncate">
+            <span className="hidden md:inline">{t("header.title")} — </span>
+            {t("header.quote")}
+          </div>
+          <div className="flex items-center space-x-2">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="h-8 w-8">
+                  <Globe className="h-4 w-4" />
+                  <span className="sr-only">Toggle language</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => setLanguage("en")}>
+                  🇺🇸 English
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setLanguage("km")}>
+                  🇰🇭 ខ្មែរ
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="h-8 w-8"
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="h-8 w-8"
+            >
+              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">Toggle theme</span>
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setShowCustomizer?.(!showCustomizer)}
+              className="h-8 w-8"
+            >
+              <Palette className="h-4 w-4" />
+              <span className="sr-only">Customize theme</span>
+            </Button>
+          </div>
+        </div>
+
+        <div className="flex flex-1 overflow-hidden relative">
+          <div
+            onClick={() => setShowCustomizer(false)}
+            className="flex-1 overflow-auto p-4"
           >
-            <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            <span className="sr-only">Toggle theme</span>
-          </Button>
-
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setShowCustomizer?.(!showCustomizer)}
-            className="h-8 w-8"
-          >
-            <Palette className="h-4 w-4" />
-            <span className="sr-only">Customize theme</span>
-          </Button>
+            {children}
+          </div>
+          {showCustomizer && (
+            <ThemeCustomizer
+              onHideThemeCustomizer={() => setShowCustomizer(false)}
+            />
+          )}
         </div>
-      </div>
 
-      {/* Terminal Content */}
-      {children}
-
-      {/* Terminal Input */}
-      <div className="border-t border-border p-2 bg-muted">
-        <div className="flex items-center">
-          <span className="text-primary mr-2">$</span>
-          <input
-            ref={inputRef}
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent outline-none hidden md:inline"
-            placeholder={t("terminal.placeholder")}
-          />
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent outline-none md:hidden"
-            placeholder={t("terminal.placeholder")}
-          />
-        </div>
-        <div className="text-xs text-muted-foreground mt-1">
-          {commandType === "exit" ? t("terminal.exit") : t("terminal.hint")}
+        {/* Terminal Input */}
+        <div className="border-t border-border p-2 bg-muted">
+          <div className="flex items-center">
+            <span className="text-primary mr-2">$</span>
+            <input
+              ref={inputRef}
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="flex-1 bg-transparent outline-none hidden md:inline"
+              placeholder={t("terminal.placeholder")}
+            />
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="flex-1 bg-transparent outline-none md:hidden"
+              placeholder={t("terminal.placeholder")}
+            />
+          </div>
+          <div className="text-xs text-muted-foreground mt-1">
+            {commandType === "exit" ? t("terminal.exit") : t("terminal.hint")}
+          </div>
         </div>
       </div>
     </div>

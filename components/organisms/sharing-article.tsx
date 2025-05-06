@@ -7,6 +7,7 @@ import {
   Share2,
   Twitter,
 } from "lucide-react";
+import Link from "next/link";
 
 interface Props {
   title: string;
@@ -50,7 +51,7 @@ export const SharingArticle: React.FC<Props> = ({ title, url }) => {
         <p className="mb-2">Share this article via:</p>
         <div className="flex space-x-4">
           {/* Facebook */}
-          <a
+          <Link
             href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -58,11 +59,11 @@ export const SharingArticle: React.FC<Props> = ({ title, url }) => {
             title="Share on Facebook"
           >
             <Facebook className="w-5 h-5 mr-1" />
-            <span>Facebook</span>
-          </a>
+            <span className="hidden md:block">Facebook</span>
+          </Link>
 
           {/* X (Twitter) */}
-          <a
+          <Link
             href={`https://twitter.com/intent/tweet?text=${title}&url=${url}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -70,11 +71,11 @@ export const SharingArticle: React.FC<Props> = ({ title, url }) => {
             title="Share on X (Twitter)"
           >
             <Twitter className="w-5 h-5 mr-1" />
-            <span>X</span>
-          </a>
+            <span className="hidden md:block">X</span>
+          </Link>
 
           {/* Telegram */}
-          <a
+          <Link
             href={`https://t.me/share/url?url=${url}&text=${title}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -82,11 +83,11 @@ export const SharingArticle: React.FC<Props> = ({ title, url }) => {
             title="Share on Telegram"
           >
             <Send className="w-5 h-5 mr-1" />
-            <span>Telegram</span>
-          </a>
+            <span className="hidden md:block">Telegram</span>
+          </Link>
 
           {/* LinkedIn */}
-          <a
+          <Link
             href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -94,8 +95,8 @@ export const SharingArticle: React.FC<Props> = ({ title, url }) => {
             title="Share on LinkedIn"
           >
             <Linkedin className="w-5 h-5 mr-1" />
-            <span>LinkedIn</span>
-          </a>
+            <span className="hidden md:block">LinkedIn</span>
+          </Link>
         </div>
       </div>
     </div>
