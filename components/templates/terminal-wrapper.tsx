@@ -30,6 +30,7 @@ import {
 import ThemeCustomizer from "../organisms/theme-customizer";
 import Link from "next/link";
 import { CircleDot } from "@/components/atoms/circle-dot";
+import { useActiveTab } from "@/contexts/tab-provider";
 
 const sections = [
   { id: "about", label: "About", icon: <User className="w-4 h-4 mr-2" /> },
@@ -76,7 +77,6 @@ const TerminalWrapper: React.FC<Props> = (props) => {
   const { children, commandType } = props;
   const router = useRouter();
 
-  const [activeTab, setActiveTab] = useState("about");
   const [input, setInput] = useState("");
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -84,7 +84,8 @@ const TerminalWrapper: React.FC<Props> = (props) => {
   const terminalRef = useRef<HTMLDivElement>(null);
   const [showCustomizer, setShowCustomizer] = useState(false);
   const { setLanguage, t } = useLanguage();
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
+  const { setActiveTab } = useActiveTab();
 
   useEffect(() => {
     // Focus input on mount and when clicking anywhere in the terminal
@@ -101,36 +102,36 @@ const TerminalWrapper: React.FC<Props> = (props) => {
     };
   }, []);
 
-  const handleCommand = (cmd: string) => {
-    const command = cmd.trim().toLowerCase();
+  const handleCommand = (command: string) => {
+    const cmd = command.trim().toLowerCase();
 
     // Add to history
-    setCommandHistory((prev) => [...prev, command]);
+    setCommandHistory((prev) => [...prev, cmd]);
     setHistoryIndex(-1);
     setInput("");
 
     // Process command
-    if (command === "help") {
+    if (cmd === "help") {
       alert("who hurt u babi? dun worry i am here to help u💖");
       return;
-    } else if (command === "exit") {
+    } else if (cmd === "exit") {
       router.push("/?tab=blog");
-    } else if (command.startsWith("goto ")) {
-      const section = command.split(" ")[1];
+    } else if (cmd.startsWith("goto ")) {
+      const section = cmd.split(" ")[1];
       const sectionExists = sections.find((s) => s.id === section);
 
       if (sectionExists) {
         setActiveTab(section);
       }
-    } else if (command === "theme dark") {
+    } else if (cmd === "dark") {
       setTheme("dark");
-    } else if (command === "theme light") {
+    } else if (cmd === "light") {
       setTheme("light");
-    } else if (command === "lang en") {
+    } else if (cmd === "en" || cmd === "english") {
       setLanguage("en");
-    } else if (command === "lang km") {
+    } else if (cmd === "km" || cmd === "kh" || cmd === "khmer") {
       setLanguage("km");
-    } else if (command === "customize") {
+    } else if (cmd === "customize") {
       setShowCustomizer?.(true);
     }
   };

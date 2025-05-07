@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/contexts/language-provider";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import ThemeDataProvider from "@/contexts/theme-provider";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { TabProvider } from "@/contexts/tab-provider";
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -91,7 +92,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <ThemeDataProvider>
-              <LanguageProvider>{children}</LanguageProvider>
+              <TabProvider>
+                <LanguageProvider>{children}</LanguageProvider>
+              </TabProvider>
             </ThemeDataProvider>
           </NextThemesProvider>
         </NuqsAdapter>

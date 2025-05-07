@@ -36,6 +36,7 @@ import { Article, Gallery as GalleryType, Project, Skill } from "@/types";
 import TerminalWrapper from "./terminal-wrapper";
 import { useQueryState } from "nuqs";
 import Link from "next/link";
+import { useActiveTab } from "@/contexts/tab-provider";
 const sections = [
   { id: "about", label: "About", icon: <User className="w-4 h-4 mr-2" /> },
   { id: "blog", label: "Blog", icon: <FileText className="w-4 h-4 mr-2" /> },
@@ -151,9 +152,7 @@ const Content: React.FC<Props> = (props) => {
   const { articles, projects, experiences, achievements, skills, galleries } =
     props;
   const { t } = useLanguage();
-  const [activeTab, setActiveTab] = useQueryState("tab", {
-    defaultValue: "about",
-  });
+  const { activeTab, setActiveTab } = useActiveTab();
 
   const tabContentConfig = [
     { value: "about", component: <AboutSection /> },
