@@ -80,7 +80,7 @@ export const en = {
   },
   lifeProgress: {
     title: "Life Progress",
-    description: "Based on 71 years life expectancy",
+    description: "Based on 85 years life expectancy",
     progressLabel: "Life Progress",
     years: "Years",
     weeks: "Weeks",
