@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/language-provider";
 import { ExternalLink, Github } from "lucide-react";
 import { Project } from "@/types";
+import { cn } from "@/lib/utils";
 
 // const projects = [
 //   {
@@ -124,7 +125,10 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
             variant={
               selectedTech.includes(tech as string) ? "default" : "outline"
             }
-            className="cursor-pointer"
+            className={cn(
+              "cursor-pointer",
+              selectedTech.includes(tech as string) && "text-gray-300"
+            )}
             onClick={() => toggleTech(tech as string)}
           >
             {tech}
@@ -154,7 +158,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
               </p>
               <div className="flex flex-wrap gap-2">
                 {project.tags?.map((tech) => (
-                  <Badge key={tech} variant="secondary" className="text-xs">
+                  <Badge key={tech} variant="secondary" className="text-xs ">
                     {tech}
                   </Badge>
                 ))}
