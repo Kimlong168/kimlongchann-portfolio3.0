@@ -57,7 +57,7 @@ export default async function Page({ params }: Props) {
 
   return (
     <TerminalWrapper commandType="exit">
-      <div className="flex-1 overflow-auto p-4">
+      <div className="flex-1 overflow-auto p-1 md:p-4">
         {/* Article metadata */}
         <div className="mb-4">
           <div className="flex">
