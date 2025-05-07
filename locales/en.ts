@@ -92,4 +92,19 @@ export const en = {
   gallery: {
     title: "Photo Gallery",
   },
+
+  drawer: {
+    title: "Available Commands",
+    description: "Use these in the terminal to interact with the app.",
+    commands: {
+      help: "Show help dialog",
+      commands: "List all commands",
+      exit: "Go back to blog tab",
+      goto: "Go to specific section",
+      theme: "Switch theme",
+      lang: "Change language",
+      customize: "Open the customizer",
+    },
+    close: "Close",
+  },
 };

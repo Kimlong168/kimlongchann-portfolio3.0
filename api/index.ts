@@ -46,7 +46,7 @@ export async function getArticleDetail(slug: string) {
   const { tags, ...result } = res?.data?.[0] || {};
   const tagsArray = tags?.split(",");
 
-  return { ...result, tags: tagsArray, cover: getStrapiMedia(result, "M") };
+  return { ...result, tags: tagsArray, cover: getStrapiMedia(result, "L") };
 }
 
 //==========================

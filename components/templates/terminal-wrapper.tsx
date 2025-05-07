@@ -20,6 +20,7 @@ import {
   FileText,
   Palette,
   Star,
+  BadgeInfo,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -31,6 +32,7 @@ import ThemeCustomizer from "../organisms/theme-customizer";
 import Link from "next/link";
 import { CircleDot } from "@/components/atoms/circle-dot";
 import { useActiveTab } from "@/contexts/tab-provider";
+import { CommandListDrawer } from "../organisms/command-list-drawer";
 
 const sections = [
   { id: "about", label: "About", icon: <User className="w-4 h-4 mr-2" /> },
@@ -83,6 +85,7 @@ const TerminalWrapper: React.FC<Props> = (props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
   const [showCustomizer, setShowCustomizer] = useState(false);
+  const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const { setLanguage, t } = useLanguage();
   const { setTheme } = useTheme();
   const { setActiveTab } = useActiveTab();
@@ -112,8 +115,7 @@ const TerminalWrapper: React.FC<Props> = (props) => {
 
     // Process command
     if (cmd === "help") {
-      alert("who hurt u babi? dun worry i am here to help u💖");
-      return;
+      setIsOpenDrawer(true);
     } else if (cmd === "exit") {
       router.push("/?tab=blog");
     } else if (cmd.startsWith("goto ")) {
@@ -178,6 +180,7 @@ const TerminalWrapper: React.FC<Props> = (props) => {
         <TerminalHeader
           setShowCustomizer={setShowCustomizer}
           showCustomizer={showCustomizer}
+          setIsOpenDrawer={setIsOpenDrawer}
         />
 
         <div className="flex flex-1 overflow-hidden relative">
@@ -193,6 +196,8 @@ const TerminalWrapper: React.FC<Props> = (props) => {
             />
           )}
         </div>
+
+        <CommandListDrawer isOpen={isOpenDrawer} setIsOpen={setIsOpenDrawer} />
 
         {/* Terminal Input */}
         <div className="border-t border-border p-2 bg-muted">
@@ -230,10 +235,11 @@ export default TerminalWrapper;
 interface HeaderProps {
   setShowCustomizer: (v: boolean) => void;
   showCustomizer: boolean;
+  setIsOpenDrawer: (v: boolean) => void;
 }
 
 const TerminalHeader: React.FC<HeaderProps> = (props) => {
-  const { setShowCustomizer, showCustomizer } = props;
+  const { setShowCustomizer, showCustomizer, setIsOpenDrawer } = props;
   const { theme, setTheme } = useTheme();
   const { setLanguage, t } = useLanguage();
   return (
@@ -274,6 +280,16 @@ const TerminalHeader: React.FC<HeaderProps> = (props) => {
           <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
+        </Button>
+
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setIsOpenDrawer(true)}
+          className="h-8 w-8"
+        >
+          <BadgeInfo className="h-4 w-4" />
+          <span className="sr-only">Help</span>
         </Button>
 
         <Button
