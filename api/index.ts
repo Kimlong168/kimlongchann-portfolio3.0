@@ -5,14 +5,7 @@ import { revalidateTag } from "next/cache";
 import { fetchAPI } from "./config";
 import * as I from "./interface";
 import { getStrapiMedia } from "./media";
-
-export type Options = {
-  sort?: string[];
-  filters?: Record<string, any>;
-  fields?: string[];
-  populate?: Record<string, any>;
-  pagination?: { page: number; pageSize: number };
-};
+import { after } from "next/server";
 
 //==========================
 // ARTICLES
@@ -179,7 +172,7 @@ export async function getGalleries() {
  *  @link : https://nextjs.org/docs/app/api-reference/functions/unstable_after
  */
 export async function revalidateCache(searchParams: any) {
-  if (+searchParams?.revalidate) {
-    await revalidateTag("api");
-  }
+  after(async () => {
+    if (+searchParams?.revalidate) revalidateTag("api");
+  });
 }

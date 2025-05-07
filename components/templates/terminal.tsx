@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useLanguage } from "@/contexts/language-provider";
 import { Button } from "@/components/ui/button";
 import {
@@ -31,10 +31,8 @@ import AchievementsSection from "@/components/organisms/achievements-section";
 import BirthdayCountdown from "@/components/organisms/birthday-countdown";
 import LifeProgress from "@/components/organisms/life-progress";
 import Gallery from "@/components/organisms/gallery";
-import { cn } from "@/lib/utils";
 import { Article, Gallery as GalleryType, Project, Skill } from "@/types";
 import TerminalWrapper from "./terminal-wrapper";
-import { useQueryState } from "nuqs";
 import Link from "next/link";
 import { useActiveTab } from "@/contexts/tab-provider";
 const sections = [

@@ -1,5 +1,3 @@
-export const revalidate = 60;
-export const dynamicParams = true;
 import {
   getAchievements,
   getArticles,
@@ -7,10 +5,16 @@ import {
   getGalleries,
   getProjects,
   getSkills,
+  revalidateCache,
 } from "@/api";
 import Terminal from "@/components/templates/terminal";
 
-export default async function Home() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<never>;
+}) {
+  revalidateCache(await searchParams);
   const [articles, projects, experiences, achievements, skills, galleries] =
     await Promise.all([
       getArticles(),

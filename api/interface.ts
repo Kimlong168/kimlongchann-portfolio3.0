@@ -64,8 +64,6 @@ export interface IGallery {
 }
 
 export type IArticlesResponse = IResponse<IArticle>;
-export type IArticleResponse = { data: IArticle };
-
 export type IProjectsResponse = IResponse<IProject>;
 export type ISkillsResponse = IResponse<ISkill>;
 export type IGalleriesReponse = IResponse<IGallery>;

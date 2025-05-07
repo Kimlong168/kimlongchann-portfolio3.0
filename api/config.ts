@@ -12,14 +12,14 @@ export const fetchAPI = async <T>(
   urlParamsObject = {},
   options = {}
 ) => {
-  // const mergedOptions = {
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: `Bearer ${process.env.NEXT_STRAPI_TOKEN}`,
-  //   },
-  //   next: { revalidate: 300, tags: ["api"] },
-  //   ...options,
-  // };
+  const mergedOptions = {
+    headers: {
+      "Content-Type": "application/json",
+      // Authorization: `Bearer ${process.env.NEXT_STRAPI_TOKEN}`,
+    },
+    next: { revalidate: 300, tags: ["api"] },
+    ...options,
+  };
 
   // Build request URL
   const query = qs.stringify(urlParamsObject);
@@ -27,7 +27,7 @@ export const fetchAPI = async <T>(
   const requestUrl = getStaticURL(endpoint);
 
   // Trigger API call
-  const response = await fetch(requestUrl);
+  const response = await fetch(requestUrl, mergedOptions);
 
   // Handle response
   if (!response.ok) {
