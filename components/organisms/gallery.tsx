@@ -34,9 +34,6 @@ import { Gallery as GalleryType } from "@/types";
 // ];
 export default function Gallery({ galleries }: { galleries: GalleryType[] }) {
   const { t } = useLanguage();
-  const [selectedImage, setSelectedImage] = useState<
-    (typeof galleries)[0] | null
-  >(null);
 
   return (
     <div className="grid gap-6">

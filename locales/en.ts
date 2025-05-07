@@ -92,7 +92,6 @@ export const en = {
   gallery: {
     title: "Photo Gallery",
   },
-
   drawer: {
     title: "Available Commands",
     description: "Use these in the terminal to interact with the app.",
@@ -104,6 +103,8 @@ export const en = {
       theme: "Switch theme",
       lang: "Change language",
       customize: "Open the customizer",
+      congrate: "just do it hehe!",
+      reset: "Reset everything",
     },
     close: "Close",
   },

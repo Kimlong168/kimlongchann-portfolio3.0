@@ -33,6 +33,7 @@ import Link from "next/link";
 import { CircleDot } from "@/components/atoms/circle-dot";
 import { useActiveTab } from "@/contexts/tab-provider";
 import { CommandListDrawer } from "../organisms/command-list-drawer";
+import { Congratulation } from "../organisms/congratulation";
 
 const sections = [
   { id: "about", label: "About", icon: <User className="w-4 h-4 mr-2" /> },
@@ -86,6 +87,7 @@ const TerminalWrapper: React.FC<Props> = (props) => {
   const terminalRef = useRef<HTMLDivElement>(null);
   const [showCustomizer, setShowCustomizer] = useState(false);
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
   const { setLanguage, t } = useLanguage();
   const { setTheme } = useTheme();
   const { setActiveTab } = useActiveTab();
@@ -125,6 +127,8 @@ const TerminalWrapper: React.FC<Props> = (props) => {
       if (sectionExists) {
         setActiveTab(section);
       }
+    } else if (cmd === "congrate") {
+      setShowConfetti(true);
     } else if (cmd === "dark") {
       setTheme("dark");
     } else if (cmd === "light") {
@@ -134,7 +138,11 @@ const TerminalWrapper: React.FC<Props> = (props) => {
     } else if (cmd === "km" || cmd === "kh" || cmd === "khmer") {
       setLanguage("km");
     } else if (cmd === "customize") {
-      setShowCustomizer?.(true);
+      setShowCustomizer(true);
+    } else if (cmd === "reset") {
+      setShowConfetti(false);
+      setTheme("dark");
+      setLanguage("en");
     }
   };
 
@@ -198,6 +206,7 @@ const TerminalWrapper: React.FC<Props> = (props) => {
         </div>
 
         <CommandListDrawer isOpen={isOpenDrawer} setIsOpen={setIsOpenDrawer} />
+        {showConfetti && <Congratulation />}
 
         {/* Terminal Input */}
         <div className="border-t border-border p-2 bg-muted">

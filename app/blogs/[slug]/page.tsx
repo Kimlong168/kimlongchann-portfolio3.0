@@ -49,7 +49,6 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: Props) {
   const { slug } = await params;
-
   const article = await getArticleDetail(slug);
 
   if (!article) {
