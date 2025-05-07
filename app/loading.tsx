@@ -1,14 +1,5 @@
-"use client";
-import TerminalWrapper from "@/components/templates/terminal-wrapper";
-import { useLanguage } from "@/contexts/language-provider";
+import { DataLoading } from "@/components/molecules/data-loading";
 
 export default function Loading() {
-  const { t } = useLanguage();
-  return (
-    <TerminalWrapper>
-      <div className="h-full grid place-content-center">
-        {t("terminal.loading")}
-      </div>
-    </TerminalWrapper>
-  );
+  return <DataLoading />;
 }

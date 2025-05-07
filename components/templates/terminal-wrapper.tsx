@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import ThemeCustomizer from "../organisms/theme-customizer";
 import Link from "next/link";
+import { CircleDot } from "@/components/atoms/circle-dot";
 
 const sections = [
   { id: "about", label: "About", icon: <User className="w-4 h-4 mr-2" /> },
@@ -74,8 +75,7 @@ interface Props {
 const TerminalWrapper: React.FC<Props> = (props) => {
   const { children, commandType } = props;
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
-  const { setLanguage, t } = useLanguage();
+
   const [activeTab, setActiveTab] = useState("about");
   const [input, setInput] = useState("");
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
@@ -83,6 +83,8 @@ const TerminalWrapper: React.FC<Props> = (props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
   const [showCustomizer, setShowCustomizer] = useState(false);
+  const { setLanguage, t } = useLanguage();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     // Focus input on mount and when clicking anywhere in the terminal
@@ -172,57 +174,10 @@ const TerminalWrapper: React.FC<Props> = (props) => {
         ref={terminalRef}
         className="w-full max-w-6xl mx-auto rounded-lg border border-border bg-background shadow-lg overflow-hidden flex flex-col h-[90vh]"
       >
-        {/* Terminal Header */}
-        <div className="flex items-center justify-between gap-2 p-2 bg-muted border-b border-border">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
-          </Link>
-          <div className="text-sm font-medium truncate">
-            <span className="hidden md:inline">{t("header.title")} — </span>
-            {t("header.quote")}
-          </div>
-          <div className="flex items-center space-x-2">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-8 w-8">
-                  <Globe className="h-4 w-4" />
-                  <span className="sr-only">Toggle language</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setLanguage("en")}>
-                  🇺🇸 English
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage("km")}>
-                  🇰🇭 ខ្មែរ
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="h-8 w-8"
-            >
-              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setShowCustomizer?.(!showCustomizer)}
-              className="h-8 w-8"
-            >
-              <Palette className="h-4 w-4" />
-              <span className="sr-only">Customize theme</span>
-            </Button>
-          </div>
-        </div>
+        <TerminalHeader
+          setShowCustomizer={setShowCustomizer}
+          showCustomizer={showCustomizer}
+        />
 
         <div className="flex flex-1 overflow-hidden relative">
           <div
@@ -270,3 +225,66 @@ const TerminalWrapper: React.FC<Props> = (props) => {
 };
 
 export default TerminalWrapper;
+
+interface HeaderProps {
+  setShowCustomizer: (v: boolean) => void;
+  showCustomizer: boolean;
+}
+
+const TerminalHeader: React.FC<HeaderProps> = (props) => {
+  const { setShowCustomizer, showCustomizer } = props;
+  const { theme, setTheme } = useTheme();
+  const { setLanguage, t } = useLanguage();
+  return (
+    <div className="flex items-center justify-between gap-2 p-2 bg-muted border-b border-border">
+      <Link href="/" className="flex items-center space-x-2">
+        <CircleDot bgColor="bg-red-500" />
+        <CircleDot bgColor="bg-yellow-500" />
+        <CircleDot bgColor="bg-green-500" />
+      </Link>
+      <div className="text-sm font-medium truncate">
+        <span className="hidden md:inline">{t("header.title")} — </span>
+        {t("header.quote")}
+      </div>
+      <div className="flex items-center space-x-2">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon" className="h-8 w-8">
+              <Globe className="h-4 w-4" />
+              <span className="sr-only">Toggle language</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={() => setLanguage("en")}>
+              🇺🇸 English
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setLanguage("km")}>
+              🇰🇭 ខ្មែរ
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="h-8 w-8"
+        >
+          <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setShowCustomizer(!showCustomizer)}
+          className="h-8 w-8"
+        >
+          <Palette className="h-4 w-4" />
+          <span className="sr-only">Customize theme</span>
+        </Button>
+      </div>
+    </div>
+  );
+};

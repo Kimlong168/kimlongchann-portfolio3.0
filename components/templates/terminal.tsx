@@ -110,48 +110,38 @@ const Terminal: React.FC<Props> = (props) => {
 
 const Header = () => {
   const { t } = useLanguage();
+
+  const socialLinks = [
+    {
+      href: "https://github.com/Kimlong168",
+      icon: Github,
+    },
+    {
+      href: "https://www.linkedin.com/in/chann-kimlong-267073282/?originalSubdomain=kh",
+      icon: Linkedin,
+    },
+    {
+      href: "https://www.facebook.com/phnompenhcrown.fc.7?mibextid=ZbWKwL",
+      icon: Facebook,
+    },
+    {
+      href: "https://t.me/kimlongchann_bot",
+      icon: Send,
+    },
+  ];
   return (
     <div className="mb-6">
       <h1 className="text-2xl font-bold mb-2">{t("profile.name")}</h1>
       <p className="text-muted-foreground mb-4">{t("profile.title")}</p>
 
       <div className="flex space-x-2">
-        <Button variant="outline" size="icon" asChild>
-          <Link
-            href="https://github.com/Kimlong168"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Github className="h-4 w-4" />
-          </Link>
-        </Button>
-        <Button variant="outline" size="icon" asChild>
-          <Link
-            href="https://www.linkedin.com/in/chann-kimlong-267073282/?originalSubdomain=kh"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Linkedin className="h-4 w-4" />
-          </Link>
-        </Button>
-        <Button variant="outline" size="icon" asChild>
-          <Link
-            href="https://www.facebook.com/phnompenhcrown.fc.7?mibextid=ZbWKwL"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Facebook className="h-4 w-4" />
-          </Link>
-        </Button>
-        <Button variant="outline" size="icon" asChild>
-          <Link
-            href="https://t.me/kimlongchann_bot"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Send className="h-4 w-4" />
-          </Link>
-        </Button>
+        {socialLinks.map(({ href, icon: Icon }, index) => (
+          <Button key={index} variant="outline" size="icon" asChild>
+            <Link href={href} target="_blank" rel="noopener noreferrer">
+              <Icon className="h-4 w-4" />
+            </Link>
+          </Button>
+        ))}
       </div>
     </div>
   );
@@ -161,10 +151,28 @@ const Content: React.FC<Props> = (props) => {
   const { articles, projects, experiences, achievements, skills, galleries } =
     props;
   const { t } = useLanguage();
-
   const [activeTab, setActiveTab] = useQueryState("tab", {
     defaultValue: "about",
   });
+
+  const tabContentConfig = [
+    { value: "about", component: <AboutSection /> },
+    { value: "blog", component: <BlogSection articles={articles} /> },
+    { value: "projects", component: <ProjectsSection projects={projects} /> },
+    {
+      value: "experience",
+      component: <ExperienceSection experiences={experiences} />,
+    },
+    { value: "skills", component: <SkillsSection skills={skills} /> },
+    {
+      value: "achievements",
+      component: <AchievementsSection achievements={achievements} />,
+    },
+    { value: "birthday", component: <BirthdayCountdown /> },
+    { value: "life-progress", component: <LifeProgress /> },
+    { value: "gallery", component: <Gallery galleries={galleries} /> },
+  ];
+
   return (
     <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full ">
       <TabsList className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 mb-4 h-full">
@@ -182,41 +190,11 @@ const Content: React.FC<Props> = (props) => {
         ))}
       </TabsList>
 
-      <TabsContent value="about">
-        <AboutSection />
-      </TabsContent>
-
-      <TabsContent value="blog">
-        <BlogSection articles={articles} />
-      </TabsContent>
-
-      <TabsContent value="projects">
-        <ProjectsSection projects={projects} />
-      </TabsContent>
-
-      <TabsContent value="experience">
-        <ExperienceSection experiences={experiences} />
-      </TabsContent>
-
-      <TabsContent value="skills">
-        <SkillsSection skills={skills} />
-      </TabsContent>
-
-      <TabsContent value="achievements">
-        <AchievementsSection achievements={achievements} />
-      </TabsContent>
-
-      <TabsContent value="birthday">
-        <BirthdayCountdown />
-      </TabsContent>
-
-      <TabsContent value="life-progress">
-        <LifeProgress />
-      </TabsContent>
-
-      <TabsContent value="gallery">
-        <Gallery galleries={galleries} />
-      </TabsContent>
+      {tabContentConfig.map(({ value, component }) => (
+        <TabsContent key={value} value={value}>
+          {component}
+        </TabsContent>
+      ))}
     </Tabs>
   );
 };
