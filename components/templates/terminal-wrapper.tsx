@@ -133,7 +133,7 @@ const TerminalWrapper: React.FC<Props> = (props) => {
       setTheme("dark");
     } else if (cmd === "light") {
       setTheme("light");
-    } else if (cmd === "en" || cmd === "english") {
+    } else if (cmd === "en" || cmd === "us" || cmd === "english") {
       setLanguage("en");
     } else if (cmd === "km" || cmd === "kh" || cmd === "khmer") {
       setLanguage("km");
