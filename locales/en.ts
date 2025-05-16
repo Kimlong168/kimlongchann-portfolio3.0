@@ -103,7 +103,7 @@ export const en = {
       theme: "Switch theme",
       lang: "Change language",
       customize: "Open the customizer",
-      congrate: "just do it hehe!",
+      congrats: "just do it hehe!",
       reset: "Reset everything",
     },
     close: "Close",

@@ -127,7 +127,7 @@ const TerminalWrapper: React.FC<Props> = (props) => {
       if (sectionExists) {
         setActiveTab(section);
       }
-    } else if (cmd === "congrate") {
+    } else if (cmd === "congrats") {
       setShowConfetti(true);
     } else if (cmd === "dark") {
       setTheme("dark");

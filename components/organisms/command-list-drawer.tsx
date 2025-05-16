@@ -26,7 +26,7 @@ export const CommandListDrawer: React.FC<Props> = (props) => {
     { cmd: "dark / light", label: t("drawer.commands.theme") },
     { cmd: "en / km", label: t("drawer.commands.lang") },
     { cmd: "customize", label: t("drawer.commands.customize") },
-    { cmd: "congrate", label: t("drawer.commands.congrate") },
+    { cmd: "congrats", label: t("drawer.commands.congrats") },
     { cmd: "reset", label: t("drawer.commands.reset") },
   ];
 
