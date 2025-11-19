@@ -96,7 +96,7 @@ export default function AITerminal() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center p-4">
       <button
-        onClick={() => router.back()}
+        onClick={() => router.push("/")}
         className="absolute top-4 left-4 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition"
       >
         ← Back
