@@ -21,6 +21,7 @@ export const CommandListDrawer: React.FC<Props> = (props) => {
 
   const commands = [
     { cmd: "help", label: t("drawer.commands.help") },
+    { cmd: "ai", label: t("drawer.commands.ai") },
     { cmd: "exit", label: t("drawer.commands.exit") },
     { cmd: "goto [section]", label: t("drawer.commands.goto") },
     { cmd: "dark / light", label: t("drawer.commands.theme") },

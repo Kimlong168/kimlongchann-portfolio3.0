@@ -97,6 +97,7 @@ export const en = {
     description: "Use these in the terminal to interact with the app.",
     commands: {
       help: "Show help dialog",
+      ai: "Chat with AI",
       commands: "List all commands",
       exit: "Go back to blog tab",
       goto: "Go to specific section",

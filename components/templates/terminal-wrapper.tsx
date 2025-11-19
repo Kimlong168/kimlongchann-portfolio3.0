@@ -143,6 +143,8 @@ const TerminalWrapper: React.FC<Props> = (props) => {
       setShowConfetti(false);
       setTheme("dark");
       setLanguage("en");
+    } else if (cmd === "ai") {
+      router.push("/ai");
     }
   };
 
