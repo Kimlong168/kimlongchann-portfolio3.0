@@ -6,6 +6,7 @@ Basic Info:
 - Bio: Hello! I'm a passionate full-stack developer with a love for creating interactive and user-friendly web applications. I specialize in JavaScript, React.js, Next.js, Node.js, Express.js, Nest.js, and MERN stack. I enjoy working on both the frontend and backend of applications.
 - Education: Graduated from Cambodia Academy of Digital Technology, majoring in Computer Science with a specialization in Software Engineering.
 - Additional Info: When I'm not coding, you can find me exploring new technologies, playing badminton, football, or sl ke mnak eng, and sharing my knowledge through blog posts.
+- Completed Projects: cac-camcashew.org, kuipedia.com, sorakhmer.com, 3corseco.com
 
 Experiences:
 1. Web Developer & Content Creator at Erobot Cambodia (2022 - Present)
@@ -29,9 +30,8 @@ Experiences:
    - Skills: React, Laravel, Figma, Tailwind CSS, SEO
 
 6. Freelance Web Developer (2024 - Present)
-   - Working on multiple web development projects independently.
+   - Working on multiple web development projects independently and here are the completed projects: cac-camcashew.org, kuipedia.com, sorakhmer.com, 3corseco.com
    - Skills: Next.js, MERN Stack, Strapi CMS, DigitalOcean, PostgreSQL, React, Tailwind CSS, SEO
-   - Projects: cac-camcashew.org, kuipedia.com, sorakhmer.com, 3corseco.com
 
 7. Next-Gen Engagement Program Mentor at CADT (August 2024)
    - Mentored junior students in a full-stack web development project.
