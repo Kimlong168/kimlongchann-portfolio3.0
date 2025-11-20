@@ -31,6 +31,40 @@ export default function AITerminal() {
   async function sendMessage(cmd: string) {
     if (!cmd.trim()) return;
 
+    if (cmd.toLowerCase() === "clear") {
+      setMessages([]);
+      setInput("");
+      return;
+    }
+    if (cmd.toLowerCase() === "help") {
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "ai",
+          text: "Available commands:\n- help: Show this help message\n- clear: Clear the terminal\n- Any other message will be sent to the AI for a response.",
+        },
+      ]);
+      setInput("");
+      return;
+    }
+
+    if (cmd.toLowerCase() === "exit") {
+      router.push("/");
+      return;
+    }
+
+    if (cmd.toLowerCase() === "about") {
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "ai",
+          text: "Kimlong AI Terminal v1.0. Type 'help' for a list of commands.",
+        },
+      ]);
+      setInput("");
+      return;
+    }
+
     setMessages((prev) => [...prev, { sender: "user", text: cmd }]);
 
     setHistory((prev) => [...prev, cmd]);
