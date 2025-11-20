@@ -41,7 +41,7 @@ export default function AITerminal() {
         ...prev,
         {
           sender: "ai",
-          text: "Available commands:\n- help: Show this help message\n- clear: Clear the terminal\n- Any other message will be sent to the AI for a response.",
+          text: "Available commands:\n- help: Show this help message\n- clear: Clear the terminal\n- exit: Exit the terminal\n- about: About this terminal\n- Any other message will be sent to the AI for a response.",
         },
       ]);
       setInput("");
