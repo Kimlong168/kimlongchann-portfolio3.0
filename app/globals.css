@@ -94,3 +94,36 @@
     opacity: 0;
   }
 }
+
+ .markdown ul {
+    list-style-type: disc !important;
+    margin-left: 1.5rem !important; /* same as ml-6 */
+    padding-left: 0 !important;
+  }
+  .markdown ol {
+    list-style-type: decimal !important;
+    margin-left: 1.5rem !important;
+    padding-left: 0 !important;
+  }
+  .markdown li {
+    margin-bottom: 0.5rem !important; 
+  }
+
+
+ .markdown table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .markdown th,
+  .markdown td {
+    border: 1px solid gray !important;  
+    padding: 0.5rem !important;
+    text-align: left !important;
+
+  }
+
+  .markdown th {
+    background-color: gray !important; 
+    color: white !important;
+  }

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Bot, UserRound } from "lucide-react";
 import { aiContext } from "@/constant/data";
+import MarkdownRenderer from "../organisms/markdown-renderer";
 
 interface TerminalMessage {
   sender: "user" | "ai";
@@ -138,7 +139,9 @@ export default function AITerminal() {
                   </div>
                 )}
               </span>{" "}
-              <span className="text-muted-foreground/50">{m.text}</span>
+              <span className="text-muted-foreground/50">
+                <MarkdownRenderer content={m.text} />
+              </span>
             </div>
           ))}
         </div>
