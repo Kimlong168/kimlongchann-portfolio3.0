@@ -9,6 +9,7 @@ import MarkdownRenderer from "../organisms/markdown-renderer";
 interface TerminalMessage {
   sender: "user" | "ai";
   text: string;
+  isHtml?: boolean;
 }
 
 export default function AITerminal() {
@@ -31,7 +32,7 @@ export default function AITerminal() {
   async function sendMessage(cmd: string) {
     if (!cmd.trim()) return;
 
-    if (cmd.toLowerCase() === "clear") {
+    if (cmd.toLowerCase() === "clear" || cmd.toLowerCase() === "cls") {
       setMessages([]);
       setInput("");
       return;
@@ -41,7 +42,7 @@ export default function AITerminal() {
         ...prev,
         {
           sender: "ai",
-          text: "Available commands:\n- help: Show this help message\n- clear: Clear the terminal\n- exit: Exit the terminal\n- about: About this terminal\n- Any other message will be sent to the AI for a response.",
+          text: "Available commands:\n- help: Show this help message\n- clear: Clear the terminal\n- cv: Download CV\n- coffee: Buy me a coffee\n- exit: Exit the terminal\n- about: About this terminal\n- Any other message will be sent to the AI for a response.",
         },
       ]);
       setInput("");
@@ -59,6 +60,44 @@ export default function AITerminal() {
         {
           sender: "ai",
           text: "Kimlong AI Terminal v1.0. Type 'help' for a list of commands.",
+        },
+      ]);
+      setInput("");
+      return;
+    }
+
+    if (cmd.toLowerCase() === "cv") {
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "ai",
+          isHtml: true,
+          text: `<a 
+  href="/ChannKimlong_CV.pdf"
+  download
+  class="inline-flex items-center gap-2 text-blue-500"
+>
+  🔗 Download CV
+</a>`,
+        },
+      ]);
+      setInput("");
+      return;
+    }
+
+    if (cmd.toLowerCase() === "coffee") {
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: "ai",
+          isHtml: true,
+          text: `
+          <img 
+            src="/qr.png" 
+            alt="QR Code" 
+            class="w-48 h-64 rounded-lg shadow-md"
+          />
+          <p class="mt-2">Scan to buy me a coffee! ☕</p>`,
         },
       ]);
       setInput("");
@@ -174,7 +213,7 @@ export default function AITerminal() {
                 )}
               </span>{" "}
               <span className="text-muted-foreground/50">
-                <MarkdownRenderer content={m.text} />
+                <MarkdownRenderer content={m.text} isHtml={m.isHtml} />
               </span>
             </div>
           ))}
